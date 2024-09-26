@@ -3,6 +3,7 @@ import { getDay } from "./Date";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { DarkTheme } from "../Configuration/Atoms";
+import { FaHeart } from "react-icons/fa6";
 
 function BlogPostCard({ blog }) {
   const [isDarkTheme] = useRecoilState(DarkTheme);
@@ -61,8 +62,8 @@ function BlogPostCard({ blog }) {
           ))}
         </div>
         <span className="flex items-center gap-2">
+          <FaHeart className="text-red-600 text-lg"></FaHeart>
           <p className="text-sm">{total_likes}</p>
-          <i className="fi fi-sr-heart text-red-600 text-lg"></i>
         </span>
       </div>
     </Link>

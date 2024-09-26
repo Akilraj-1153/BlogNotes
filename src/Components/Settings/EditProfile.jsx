@@ -12,6 +12,16 @@ import {
 } from "../Configuration/Atoms";
 import { useForm } from "react-hook-form";
 import { getButtonClass } from "../Common/MiniComponent";
+import { MdOutlineAlternateEmail } from "react-icons/md";
+import { FaXTwitter } from "react-icons/fa6";
+import { BsInstagram } from "react-icons/bs";
+import { FiGithub } from "react-icons/fi";
+import { FiYoutube } from "react-icons/fi";
+import { FiGlobe } from "react-icons/fi";
+import { IoMailOpenOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa";
+import { FiFacebook } from "react-icons/fi";
+import { BiEdit } from "react-icons/bi";
 
 function EditProfile() {
   const bioLimit = 500;
@@ -254,7 +264,7 @@ function EditProfile() {
             <div className="w-full flex gap-2 flex-col">
               <div className="flex items-center gap-2 rounded-lg">
                 <label className="font-medium flex items-center">
-                  <i className="fi fi-rr-user text-2xl h-fit pt-2"></i>
+                  <FaRegUser className="text-2xl"></FaRegUser>
                 </label>
                 <input
                   className={`px-3 py-2 w-full rounded-lg cursor-not-allowed outline-none boder-white border-2  ${
@@ -270,7 +280,7 @@ function EditProfile() {
 
               <div className="flex items-center gap-2 rounded-lg">
                 <label className="font-medium flex items-center">
-                  <i className="fi fi-rr-envelope text-2xl h-fit pt-2"></i>
+                  <IoMailOpenOutline className="text-2xl"></IoMailOpenOutline>
                 </label>
                 <input
                   className={`px-3 py-2 w-full rounded-lg cursor-not-allowed outline-none  boder-white border-2 ${
@@ -289,7 +299,7 @@ function EditProfile() {
               <div className="flex flex-col items-start gap-2 w-full">
                 <div className="flex gap-2 w-full items-center">
                   <label className="font-medium flex items-center gap-2">
-                    <i className="fi fi-rs-at text-2xl h-fit pt-2"></i>
+                    <MdOutlineAlternateEmail className="text-2xl"></MdOutlineAlternateEmail>
                   </label>
                   <input
                     className={`px-3 py-2 w-full rounded-lg outline-none  boder-white border-2 ${
@@ -309,11 +319,13 @@ function EditProfile() {
           </div>
 
           <div className="flex flex-col">
-            <label className="font-medium">
+            <label className="font-medium ml-9">
               Bio -{" "}
-              <span className="text-sm"> {charCount} Characters Left</span>
+              <span className="text-sm "> {charCount} Characters Left</span>
             </label>
-            <textarea
+            <div className="flex gap-2">
+              <BiEdit className="text-2xl"></BiEdit>
+              <textarea
               onInput={handleBioChange}
               maxLength={bioLimit}
               rows={5}
@@ -325,6 +337,8 @@ function EditProfile() {
               placeholder="Add Bio"
               {...register("bio")}
             />
+            </div>
+            
           </div>
         </div>
 
@@ -336,7 +350,7 @@ function EditProfile() {
           <label className="font-medium">Social Handles</label>
           <div className="w-full">
             <div className="w-full flex items-center gap-2">
-              <i className="fi fi-brands-facebook text-xl"></i>
+              <FiFacebook className="text-2xl"></FiFacebook>
               <input
                 className={`px-3 py-2 w-full  rounded-lg outline-none  boder-white border-2 ${
                   isDarkTheme
@@ -352,7 +366,7 @@ function EditProfile() {
 
           <div className="w-full">
             <div className="w-full flex items-center gap-2">
-              <i className="fi fi-brands-twitter text-xl"></i>
+            <FaXTwitter className="text-2xl"></FaXTwitter>
               <input
                 className={`px-3 py-2 w-full   rounded-lg outline-none  boder-white border-2 ${
                   isDarkTheme
@@ -368,7 +382,8 @@ function EditProfile() {
 
           <div className="w-full">
             <div className="w-full flex items-center gap-2">
-              <i className="fi fi-brands-instagram text-xl"></i>
+            <BsInstagram className="text-2xl"></BsInstagram>
+
               <input
                 className={`px-3 py-2 w-full   rounded-lg outline-none  boder-white border-2 ${
                   isDarkTheme
@@ -384,7 +399,7 @@ function EditProfile() {
 
           <div className="w-full">
             <div className="w-full flex items-center gap-2">
-              <i className="fi fi-brands-github text-xl"></i>
+              <FiGithub className="text-2xl"></FiGithub>
               <input
                 className={`px-3 py-2 w-full   rounded-lg outline-none  boder-white border-2 ${
                   isDarkTheme
@@ -400,7 +415,7 @@ function EditProfile() {
 
           <div className="w-full">
             <div className="w-full flex items-center gap-2">
-              <i className="fi fi-brands-youtube text-xl"></i>
+              <FiYoutube className="text-2xl"></FiYoutube>
               <input
                 className={`px-3 py-2 w-full   rounded-lg outline-none  boder-white border-2 ${
                   isDarkTheme
@@ -416,7 +431,7 @@ function EditProfile() {
 
           <div className="w-full">
             <div className="w-full flex items-center gap-2">
-              <i className="fi fi-rr-globe text-xl"></i>
+              <FiGlobe className="text-2xl"></FiGlobe>
               <input
                 className={`px-3 py-2 w-full   rounded-lg outline-none  boder-white border-2 ${
                   isDarkTheme

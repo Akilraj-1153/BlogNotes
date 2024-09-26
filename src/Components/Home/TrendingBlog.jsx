@@ -6,6 +6,7 @@ import { getDay } from "../Common/Date";
 import { useRecoilState } from "recoil";
 import { DarkTheme } from "../Configuration/Atoms";
 import { Link } from "react-router-dom";
+import { FaHeart } from "react-icons/fa6";
 
 function TrendingBlog() {
   const [Blog, setBlog] = useState(null);
@@ -80,8 +81,8 @@ function TrendingBlog() {
                     ))}
                   </div>
                   <div className="flex items-center gap-2">
+                    <FaHeart className="text-red-600 text-lg"></FaHeart>
                     <p className="text-sm">{blog.activity.total_likes}</p>
-                    <i className="fi fi-sr-heart text-red-600 text-lg"></i>
                   </div>
                 </div>
               </div>

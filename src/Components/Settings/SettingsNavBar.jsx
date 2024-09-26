@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
-import { CiMenuKebab } from "react-icons/ci";
+import { CiMenuKebab, CiFileOn } from "react-icons/ci";
 import { AiOutlineMenu } from "react-icons/ai";
 import { useRecoilState } from "recoil";
 import { DarkTheme, UserAuthDetails } from "../Configuration/Atoms";
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { FaRegUser } from "react-icons/fa";
+import { PiPasswordBold } from "react-icons/pi";
 import { BlogButtons } from "../Common/MiniComponent";
 
-function SettingsNavBar({ profile }) {
-  console.log(profile);
-
+function SettingsNavBar() {
   const location = useLocation();
   const page = location.pathname.split("/")[2] || "";
 
@@ -17,7 +18,7 @@ function SettingsNavBar({ profile }) {
   const [currentSettingsPage, setCurrentSettingsPage] = useState(page.replace("-", " "));
   const [isDarkTheme] = useRecoilState(DarkTheme);
 
-  const SidebarLink = ({ to, iconClass, label, page }) => (
+  const SidebarLink = ({ to, icon: Icon, label, page }) => (
     <Link
       to={to}
       className={`${BlogButtons(isDarkTheme, page, currentSettingsPage)} flex gap-2`}
@@ -26,7 +27,7 @@ function SettingsNavBar({ profile }) {
         setShowNav(false);
       }}
     >
-      <i className={`${iconClass} h-fit pt-1`}></i>
+      <Icon className="text-2xl" />
       {label}
       {label === "Notifications" && userAuth.new_notification_available && (
         <span className="h-2 w-2 bg-red-500 rounded-full ml-2"></span>
@@ -51,15 +52,15 @@ function SettingsNavBar({ profile }) {
             <div className="flex flex-col gap-2">
               <h1 className="text-xl">Dashboard</h1>
               <div className="ml-5">
-                <SidebarLink to="/dashboard/blog" iconClass="fi fi-rr-journal-alt" label="Blog" page="blog" />
-                <SidebarLink to="/dashboard/notifications" iconClass="fi fi-rs-bell" label="Notifications" page="notifications" />
+                <SidebarLink to="/dashboard/blog" icon={CiFileOn} label="Blog" page="blog" />
+                <SidebarLink to="/dashboard/notifications" icon={IoMdNotificationsOutline} label="Notifications" page="notifications" />
               </div>
             </div>
             <div className="flex flex-col gap-2">
               <h1 className="text-xl">Settings</h1>
               <div className="ml-5">
-                <SidebarLink to="/settings/Edit-Profile" iconClass="fi fi-rr-user" label="Edit Profile" page="Edit Profile" />
-                <SidebarLink to="/settings/Change-Password" iconClass="fi fi-rr-password-email" label="Change Password" page="Change Password" />
+                <SidebarLink to="/settings/Edit-Profile" icon={FaRegUser} label="Edit Profile" page="Edit Profile" />
+                <SidebarLink to="/settings/Change-Password" icon={PiPasswordBold} label="Change Password" page="Change Password" />
               </div>
             </div>
           </div>
@@ -69,15 +70,15 @@ function SettingsNavBar({ profile }) {
           <div className="flex flex-col gap-2">
             <h1 className="text-xl">Dashboard</h1>
             <div className="ml-5">
-              <SidebarLink to="/dashboard/blog" iconClass="fi fi-rr-journal-alt" label="Blog" page="blog" />
-              <SidebarLink to="/dashboard/notifications" iconClass="fi fi-rs-bell" label="Notifications" page="notifications" />
+              <SidebarLink to="/dashboard/blog" icon={CiFileOn} label="Blog" page="blog" />
+              <SidebarLink to="/dashboard/notifications" icon={IoMdNotificationsOutline} label="Notifications" page="notifications" />
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="text-xl">Settings</h1>
             <div className="ml-5">
-              <SidebarLink to="/settings/Edit-Profile" iconClass="fi fi-rr-user" label="Edit Profile" page="Edit Profile" />
-              <SidebarLink to="/settings/Change-Password" iconClass="fi fi-rr-password-email" label="Change Password" page="Change Password" />
+              <SidebarLink to="/settings/Edit-Profile" icon={FaRegUser} label="Edit Profile" page="Edit Profile" />
+              <SidebarLink to="/settings/Change-Password" icon={PiPasswordBold} label="Change Password" page="Change Password" />
             </div>
           </div>
         </div>

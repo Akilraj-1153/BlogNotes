@@ -4,6 +4,9 @@ import { useRecoilState } from "recoil";
 import { UserAuthDetails, DarkTheme } from "../Configuration/Atoms";
 import axios from "axios";
 import { getButtonClass } from "../Common/MiniComponent";
+import { FaHeart } from "react-icons/fa6";
+import { FaRegCommentDots } from "react-icons/fa6";
+import { LiaReadme } from "react-icons/lia";
 
 function BlogManageCard({ blog, index, BlogData }) {
   const [userAuth, setUserAuth] = useRecoilState(UserAuthDetails);
@@ -94,18 +97,20 @@ function BlogManageCard({ blog, index, BlogData }) {
             Delete
           </button>
         </div>
-        <div className="flex gap-3 items-center justify-between">
-          <h1 className="flex  gap-2 items-cneter">
-            <i className="fi fi-sr-heart mt-1"></i>
-            <p>{total_likes}</p>
+        <div className="flex gap-4 items-center justify-between p-4 ">
+          <h1 className="flex gap-2 items-center ">
+            <FaHeart className="text-xl text-red-500" />
+            <p className="font-semibold">{total_likes}</p>
           </h1>
-          <h1 className="flex  gap-2 items-cneter">
-            <i className="fi fi-rr-comment"></i>
-            <p>{total_comments}</p>
+
+          <h1 className="flex gap-2 items-center ">
+            <FaRegCommentDots className="text-xl text-blue-500" />
+            <p className="font-semibold">{total_comments}</p>
           </h1>
-          <h1 className="flex  gap-2 items-cneter">
-            <i className="fi fi-sr-book-alt"></i>
-            <p>{total_reads}</p>
+
+          <h1 className="flex gap-2 items-center ">
+            <LiaReadme className="text-xl text-green-500" />
+            <p className="font-semibold">{total_reads}</p>
           </h1>
         </div>
       </div>

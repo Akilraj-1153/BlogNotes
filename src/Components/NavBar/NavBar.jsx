@@ -13,6 +13,7 @@ import { removeFromLocal } from "../Configuration/Session";
 import UserNavBarPanel from "./UserNavBarPanal";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
+import { LuFileEdit } from "react-icons/lu";
 
 function NavBar({ onHeightChange }) {
   const [isDarkTheme, setIsDarkTheme] = useRecoilState(DarkTheme);
@@ -109,8 +110,9 @@ function NavBar({ onHeightChange }) {
                 )}`}
                 aria-label="Write"
               >
-                <i className="fi fi-rr-file-edit pt-1 h-fit"></i>
                 Write
+                <LuFileEdit className="text-xl"></LuFileEdit>
+
               </Link>
               <button
                 className={`p-1 rounded-full sm:hidden !p-2 ${getButtonClass(

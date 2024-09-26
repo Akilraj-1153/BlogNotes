@@ -4,6 +4,7 @@ import { AiFillHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { DarkTheme } from "../Configuration/Atoms";
+import { FaHeart } from "react-icons/fa6";
 
 function SimilarBlog({ content, author }) {
   const {
@@ -51,8 +52,8 @@ function SimilarBlog({ content, author }) {
           </div>
 
           <span className="flex items-center gap-2">
+            <FaHeart className="text-red-600 text-lg"></FaHeart>
             <p className="text-sm">{total_likes}</p>
-            <i class="fi fi-sr-heart text-red-900 text-sm mt-1"></i>
           </span>
         </div>
         <h1 className="text-lg font-bold  break-words mt-2">{title}</h1>

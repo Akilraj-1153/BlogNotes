@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Mate:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+.categoryscrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.categoryscrollbar::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 20px;
+}
+.categoryscrollbar::-webkit-scrollbar-corner {
+  background-color: transparent;
+}

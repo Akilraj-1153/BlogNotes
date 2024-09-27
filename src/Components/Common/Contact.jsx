@@ -64,8 +64,8 @@ function Contact() {
 
     try {
       const result = await emailjs.send(
-        "service_xj8hxyc", // replace with your service ID
-        "template_j6xfe9f", // replace with your template ID
+        "service_sc5g06r", // replace with your service ID
+        "template_ta4bq8o", // replace with your template ID
         {
           user_name: data.user_name,
           user_email: data.user_email,

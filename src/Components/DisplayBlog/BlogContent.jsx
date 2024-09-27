@@ -21,7 +21,7 @@ const Quote = ({ quote, caption }) => {
 
 const List = ({ style, items }) => {
   return (
-    <div className=" pl-10">
+    <div className=" text-justify p-2">
       <ol className={style === "ordered" ? "list-decimal" : "list-disc"}>
         {items.map((item, i) => (
           <li

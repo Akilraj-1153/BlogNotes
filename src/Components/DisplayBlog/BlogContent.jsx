@@ -85,7 +85,9 @@ function BlogContent({ block }) {
   }
 
   if (type === "code") {
-    return <pre className="bg-black/50 rounded-lg p-2">{data.code}</pre>;
+    return <code>
+      <pre className="bg-black/50 w-full text-wrap text-sm rounded-lg p-2">{data.code}</pre>
+      </code>
   }
 
   if (type === "link") {

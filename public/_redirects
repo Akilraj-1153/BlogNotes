@@ -1,0 +1,11 @@
+# Redirect /old-page to /new-page
+/old-page    /new-page   301
+
+# Redirect everything to the main index.html for a SPA (single-page app)
+/*    /index.html   200
+
+# Redirect all HTTP requests to HTTPS
+http://example.com/*  https://example.com/:splat  301
+
+# Custom 404 page
+/*  /404.html   404

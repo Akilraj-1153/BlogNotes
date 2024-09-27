@@ -1,8 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { Link } from "react-router-dom";
 import { DarkTheme, NavHeight } from "../Configuration/Atoms";
-import { useState, useRef } from "react";
 import { FaGithub, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { RiInstagramFill } from "react-icons/ri";
 import { ExternalLink } from "react-external-link";
@@ -25,6 +24,8 @@ function Contact() {
     formState: { errors },
     reset,
   } = useForm();
+
+
 
   const sendEmail = async (data, e) => {
     setIsSubmitting(true);
@@ -61,18 +62,23 @@ function Contact() {
         );
       });
     }
+      // Log the environment variables and form data for debugging
+  console.log("Service ID:", import.meta.env.VITE_EMAILJS_SERVICE);
+  console.log("Template ID:", import.meta.env.VITE_EMAILJS_TEMPLATE);
+  console.log("Public Key:", import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+  console.log("Form Data:", data);
 
     try {
       const result = await emailjs.send(
-        "service_sc5g06r", // replace with your service ID
-        "template_ta4bq8o", // replace with your template ID
+        import.meta.env.VITE_EMAILJS_SERVICE, // Correct the variable name
+        import.meta.env.VITE_EMAILJS_TEMPLATE, // Correct the variable name
         {
           user_name: data.user_name,
           user_email: data.user_email,
           message: data.message,
           file_url: fileUrl, // Send the file URL instead of the file itself
         },
-        "9ZIOB5GrK4KOMXko2" // replace with your public key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY // Add the public key from environment variables
       );
       toast.success("Message sent!");
       console.log(result.text);
@@ -97,12 +103,12 @@ function Contact() {
     >
       <h1 className="text-center p-5 text-2xl font-bold">Contact</h1>
       <div
-        className={` ${
-          isDarkTheme ? "bg-[#1E1E1E] " : "bg-white "
-        } shadow-lg rounded-lg max-w-2xl py-10 md:px-10 `}
+        className={`${
+          isDarkTheme ? "bg-[#1E1E1E]" : "bg-white"
+        } shadow-lg rounded-lg max-w-2xl py-10 md:px-10`}
       >
         <div className="w-full">
-          <div className=" h-full w-full justify-start items-center flex flex-col">
+          <div className="h-full w-full justify-start items-center flex flex-col">
             <div className="flex flex-row gap-10">
               <button className="contacticon">
                 <ExternalLink href="https://www.linkedin.com/in/akilrajn1153">
@@ -121,7 +127,7 @@ function Contact() {
               </button>
             </div>
 
-            <div className="form  w-full p-5 m-5 rounded-xl  ">
+            <div className="form w-full p-5 m-5 rounded-xl">
               <form
                 ref={form}
                 onSubmit={handleSubmit(sendEmail)}
@@ -136,7 +142,7 @@ function Contact() {
 
                 <label className="emaillabel">Email</label>
                 <input
-                  className="p-2 emailip bg-transparent border rounded-full font-sans  outline-none"
+                  className="p-2 emailip bg-transparent border rounded-full font-sans outline-none"
                   type="email"
                   {...register("user_email", { required: true })}
                 />
@@ -146,7 +152,7 @@ function Contact() {
 
                 <label className="textlabel">Message</label>
                 <textarea
-                  className="p-2 textip bg-transparent border rounded-lg font-sans h-20  outline-none resize-none"
+                  className="p-2 textip bg-transparent border rounded-lg font-sans h-20 outline-none resize-none"
                   {...register("message", { required: true })}
                 ></textarea>
                 {errors.message && (

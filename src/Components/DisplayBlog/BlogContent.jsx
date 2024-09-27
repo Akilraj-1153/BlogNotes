@@ -3,8 +3,8 @@ import { ExternalLink } from "react-external-link";
 
 const Img = ({ url, caption }) => {
   return (
-    <div>
-      <img className="aspect-video rounded-lg" src={url} alt={caption} />
+    <div className="w-full">
+      <img className="aspect-video w-full object-cover  rounded-lg" src={url} alt={caption} />
       {caption.length > 0 && <p className="mt-1 text-center">{caption}</p>}
     </div>
   );

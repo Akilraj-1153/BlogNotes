@@ -36,10 +36,8 @@ function SearchPage() {
         data_to_send: { query },
         create_new_arr,
       });
-      setTimeout(() => {
         setLatestBlogs(formattedData);
         setLoadingLatest(false);
-      }, 1000);
     } catch (err) {}
   };
 

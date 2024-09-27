@@ -100,6 +100,8 @@ function PublishForm() {
           toast.success("Blog Published");
         }, 600);
         setTimeout(() => {
+          navigate("/");
+          SetEditor("Editor");
           setBlog({
             title: "",
             banner: "",
@@ -108,8 +110,7 @@ function PublishForm() {
             des: "",
             author: { personal_info: {} },
           });
-          navigate("/");
-          SetEditor("Editor");
+          
         }, 1000);
       })
       .catch(({ response }) => {

@@ -19,10 +19,8 @@ function TrendingBlog() {
         `${import.meta.env.VITE_SERVER_DOMAIN}/api/blog/trending_blog`
       );
       console.log(data);
-      setTimeout(() => {
         setLoading(false);
         setBlog(data);
-      }, 500);
     } catch (error) {
       console.error("Error fetching blogs by category:", error);
     }

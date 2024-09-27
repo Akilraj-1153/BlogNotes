@@ -41,9 +41,7 @@ function Notifications() {
           user: userAuth.access_token,
         });
 
-        setTimeout(() => {
           setFetchedNotification(formattedData);
-        }, 1000);
       })
       .catch((err) => console.error(err));
   };

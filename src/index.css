@@ -34,3 +34,11 @@ body {
 .categoryscrollbar::-webkit-scrollbar-corner {
   background-color: transparent;
 }
+
+.ce-toolbar__plus svg path {
+  stroke: #000000; /* Replace with your desired color */
+}
+
+.ce-toolbar__settings-btn svg path {
+  stroke: #000000; /* Replace with your desired color */
+}

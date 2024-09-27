@@ -60,10 +60,8 @@ function ProfilePage() {
         { username: profileId }
       );
       console.log(response.data);
-      setTimeout(() => {
         setProfile(response.data);
         setLoading(false);
-      }, 1000);
     } catch (err) {
       setLoading(false);
       console.log(err);

@@ -45,10 +45,8 @@ function BlogManagement() {
         user: userAuth.access_token,
       });
       console.log(formattedData);
-      setTimeout(() => {
         draft ? setDraftBlog(formattedData) : setBlog(formattedData);
         setLoading(false); // Always set loading to false after the fetch is done
-      }, 1000);
     } catch (err) {
       console.error(err);
     }

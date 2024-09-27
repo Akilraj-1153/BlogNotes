@@ -28,10 +28,8 @@ function EditorPage() {
         mode: "edit",
       })
       .then(({ data }) => {
-        setTimeout(() => {
           setBlog(data.blog);
           setLoading(false);
-        }, 1000);
       })
       .catch((err) => {
         console.error(err);

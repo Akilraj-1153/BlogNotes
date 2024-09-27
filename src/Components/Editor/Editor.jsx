@@ -63,7 +63,7 @@ function Editor() {
         editorInstance = editor;
       }
     }
-  }, [blog_id, isEditorReady]);
+  }, [blog_id]);
 
   return (
     <div>

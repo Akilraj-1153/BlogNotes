@@ -36,11 +36,9 @@ function CategoryPage() {
         data_to_send: { tag: categoryname },
       });
 
-      setTimeout(() => {
         setLoading(false);
         setBlog(formattedData);
         setIsLastPage(formattedData.results.length >= formattedData.totalDocs);
-      }, 500);
     } catch (error) {
       console.error("Error fetching blogs by category:", error);
     }
@@ -63,11 +61,9 @@ function CategoryPage() {
         countRoute: "/api/blog/all_latest_blogs_count",
       });
 
-      setTimeout(() => {
         setLoading(false);
         setBlog(formattedData);
         setIsLastPage(formattedData.results.length >= formattedData.totalDocs);
-      }, 500);
     } catch (error) {
       console.error("Error fetching latest blogs:", error);
     }

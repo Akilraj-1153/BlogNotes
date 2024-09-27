@@ -111,7 +111,7 @@ const BlogEditor = () => {
       return toast.error("Please provide a title before saving the draft.");
     }
 
-    const loadingToast = toast.loading("Saving draft...");
+    const loadingToastforsaveDraft = toast.loading("Saving draft...");
     e.target.classList.add("disable");
 
     try {
@@ -124,7 +124,7 @@ const BlogEditor = () => {
         } else {
           toast.error("Editor content is empty.");
           e.target.classList.remove("disable");
-          toast.dismiss(loadingToast);
+          toast.dismiss(loadingToastforsaveDraft);
           return;
         }
       }
@@ -155,6 +155,9 @@ const BlogEditor = () => {
       setTimeout(() => {
         toast.success("Draft saved successfully!");
       }, 600);
+      setTimeout(() => {
+        navigate("/");
+      }, 700);
 
       setBlog({
         title: "",
@@ -165,9 +168,7 @@ const BlogEditor = () => {
         author: { personal_info: {} },
       });
 
-      setTimeout(() => {
-        navigate("/");
-      }, 1500);
+
     } catch (error) {
       e.target.classList.remove("disable");
       toast.dismiss(loadingToast);

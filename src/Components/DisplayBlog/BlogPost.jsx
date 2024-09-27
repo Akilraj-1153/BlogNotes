@@ -65,9 +65,7 @@ function BlogPost() {
             console.log(err);
           });
 
-        setTimeout(() => {
           setLoading(false);
-        }, 1000);
       })
       .catch((err) => {
         console.log(err);

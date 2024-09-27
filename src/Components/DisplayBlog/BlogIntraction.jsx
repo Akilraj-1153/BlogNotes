@@ -150,7 +150,7 @@ function BlogIntraction() {
           </h1>
         </div>
       </div>
-      <Toaster position="bottom" />
+      <Toaster  />
     </div>
   );
 }

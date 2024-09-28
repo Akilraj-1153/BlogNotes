@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import defaultBanner from "../../assets/Images/BlogNotes Banner.png";
 import { useRecoilState } from "recoil";
 import {
@@ -27,8 +27,8 @@ const BlogEditor = () => {
   const [isEditorReady] = useRecoilState(texteditor);
   const [userAuth] = useRecoilState(UserAuthDetails);
   let { blog_id } = useParams();
-
   const navigate = useNavigate();
+  const textareaRef = useRef(null);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -78,6 +78,12 @@ const BlogEditor = () => {
     input.style.height = "auto";
     input.style.height = `${input.scrollHeight}px`;
     setBlog((prev) => ({ ...prev, title: input.value }));
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault(); // Prevent default scrolling behavior
+    }
   };
 
   const handlePublishEvent = async () => {
@@ -149,15 +155,10 @@ const BlogEditor = () => {
       );
 
       setTimeout(() => {
-        toast.dismiss(loadingToast);
-      }, 500);
-
-      setTimeout(() => {
+        toast.dismiss(loadingToastforsaveDraft);
         toast.success("Draft saved successfully!");
-      }, 600);
-      setTimeout(() => {
         navigate("/");
-      }, 700);
+      }, 600);
 
       setBlog({
         title: "",
@@ -168,10 +169,9 @@ const BlogEditor = () => {
         author: { personal_info: {} },
       });
 
-
     } catch (error) {
       e.target.classList.remove("disable");
-      toast.dismiss(loadingToast);
+      toast.dismiss(loadingToastforsaveDraft);
       toast.error(
         error.response?.data?.error ||
           "An error occurred while saving the draft."
@@ -182,28 +182,20 @@ const BlogEditor = () => {
 
   return (
     <div className="h-fit w-full p-2">
-      <div
-        className={`blogeditor overflow-y-auto flex justify-center p-2 rounded-xl`}
-      >
+      <div className={`blogeditor overflow-y-auto h-screen flex justify-center p-2 rounded-xl`}>
         <div
-          className={`h-fit w-full md:max-w-3xl rounded-xl shadow-xl ${
-            isDarkTheme ? "bg-[#282828]" : "bg-white"
-          }`}
+          className={`h-fit w-full md:max-w-3xl rounded-xl shadow-xl ${isDarkTheme ? "bg-[#282828]" : "bg-white"}`}
         >
-          <div className="flex items-center gap-2 p-2 justify-between w-full ">
+          <div className="flex items-center gap-2 p-2 justify-between w-full">
             <button
               onClick={handlePublishEvent}
-              className={`px-4 py-2 w-fit rounded-full transition-colors duration-300 cursor-pointer ${getButtonClass(
-                isDarkTheme
-              )}`}
+              className={`px-4 py-2 w-fit rounded-full transition-colors duration-300 cursor-pointer ${getButtonClass(isDarkTheme)}`}
             >
               Publish
             </button>
             <button
               onClick={handleSaveDraft}
-              className={`px-4 py-2 w-fit rounded-full transition-colors duration-300 cursor-pointer ${getButtonClass(
-                isDarkTheme
-              )}`}
+              className={`px-4 py-2 w-fit rounded-full transition-colors duration-300 cursor-pointer ${getButtonClass(isDarkTheme)}`}
             >
               Save Draft
             </button>
@@ -226,9 +218,11 @@ const BlogEditor = () => {
           </div>
           <div className="titletextArea mt-5 p-2">
             <textarea
+              ref={textareaRef}
               value={blog.title}
               onChange={handleTitleChange}
-              className="w-full resize-none h-fit outline-none rounded-lg px-2 text-3xl leading-tight bg-transparent"
+              onKeyDown={handleKeyDown} // Add this line
+              className="w-full h-auto max-h-32 resize-none outline-none rounded-lg px-2 text-3xl leading-tight bg-transparent overflow-y-auto"
               placeholder="Blog Title"
             />
           </div>

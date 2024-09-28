@@ -26,8 +26,7 @@ function CategoryHome() {
         style={{ minHeight: `calc(100vh - ${navbarHeight}px)` }}
       >
         <div
-          className={` categoryscrollbar w-full h-full  sm:w-2/5 md:w-2/6 lg:w-1/5 p-2 overflow-y-scroll `}
-          style={{ height: `calc(100vh - ${navbarHeight}px)` }}
+          className={` categoryscrollbar w-full h-full  sm:w-2/5 md:w-2/6 lg:w-1/5 p-2 overflow-y-scroll  `}
         >
           <CategoryNavBar />
         </div>

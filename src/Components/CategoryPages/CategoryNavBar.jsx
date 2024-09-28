@@ -82,7 +82,7 @@ function CategoryNavBar() {
   };
 
   return (
-    <div className={`h-full w-full p-2 rounded-lg `}>
+    <div className={` w-full p-2 rounded-lg `}>
       {/* Mobile Navbar */}
       <div className="sm:hidden flex items-center justify-between">
         <h1
@@ -100,7 +100,7 @@ function CategoryNavBar() {
 
       {/* Mobile Navigation Menu */}
       {showNav && (
-        <div className="sm:hidden flex flex-col w-full gap-2 p-4">
+        <div className="sm:hidden flex flex-col w-full gap-2 p-4 h-[50vh] ">
           <div className="w-full">
             <h1
               className={`${BlogButtons(
@@ -134,7 +134,7 @@ function CategoryNavBar() {
       )}
 
       {/* Desktop Navbar */}
-      <div className="hidden sm:flex flex-col gap-2 p-4">
+      <div className="hidden sm:flex flex-col gap-2 p-4 h-[80vh]">
         <div className="flex flex-col items-start justify-start gap-2">
           <div className="w-full">
             <h1
